@@ -31,25 +31,42 @@
         <h1>
 <a id="jet" class="anchor" href="#jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jet</h1>
 
-<p>An HTTP/HTTPS proxy integrated with socks.</p>
+<p>An HTTP/HTTPS proxy integrated with SOCKS v4/v4a/v5.</p>
 
 <blockquote>
 <p>The name "Jet" is inspired by Jet Black from Cowboy Bepop.</p>
 </blockquote>
 
-<pre><code>                               ┌───────────────────────────────────────┐
-                               │                                       │
-                               │                                       ▼
-                               │                                 ┌───────────┐
-┌──────────────────┐     ┌───────────┐                           │           │
-│ User Application │────▶│    Jet    │                           │ Internet  │
-└──────────────────┘     └───────────┘                           │           │
-                               │                                 └───────────┘
-                               │          ┌──────────────┐              ▲
-                               │          │ Socks Proxy  │              │
-                               └─────────▶│    (like     │──────────────┘
-                                          │ shadowsocks) │
-                                          └──────────────┘
+<h2>
+<a id="what-does-jet-do" class="anchor" href="#what-does-jet-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What does Jet do?</h2>
+
+<pre><code>                      ┌─────────────┐
+                      │    User     │
+                      │ Application │
+                      └─────────────┘
+                             │
+                             │
+                             │
+                             ▼
+                         ┏━━━━━━━┓
+                   ┌─────┃  Jet  ┃─────┐
+                   │     ┗━━━━━━━┛     │
+                   │                   │
+                   │                   │
+                   │                   │
+                   ▼                   │
+        ┌────────────────────┐         │
+        │ SOCKS 4/4a/5 Proxy │         │
+        │ (shadowsocks etc.) │         │
+        └────────────────────┘         │
+                   │                   │
+                   │                   │
+                   │                   │
+                   │                   │
+                   │   ┌────────────┐  │
+                   └──▶│  Internet  │◀─┘
+                       └────────────┘
+
 </code></pre>
 
 <h2>
@@ -58,43 +75,60 @@
 <pre><code>npm install -g m31271n/jet
 </code></pre>
 
-<h2>
-<a id="jet-need-a-socks5-proxy" class="anchor" href="#jet-need-a-socks5-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jet need a socks5 proxy</h2>
+<blockquote>
+<p>I do not share my open source work at NPM, because of <a href="https://medium.com/@azerbike/i-ve-just-liberated-my-modules-9045c06be67c">I’ve Just Liberated My Modules</a>.</p>
+</blockquote>
 
-<p>Jet need a socks5 proxy that run at <code>127.0.0.1:1080</code>. Shadowsocks is a good choice.</p>
+<h2>
+<a id="jet-need-a-socks-proxy" class="anchor" href="#jet-need-a-socks-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jet Need A SOCKS Proxy</h2>
+
+<p>Now, Jet just support SOCKS v5 proxy that run at <code>127.0.0.1:1080</code>. Shadowsocks is a good choice.</p>
+
+<blockquote>
+<p>If you want the support for SOCKS v4/v4a, contact me, please.</p>
+</blockquote>
 
 <h2>
 <a id="run-jet" class="anchor" href="#run-jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Jet</h2>
 
-<pre><code>jet run // run jet on 127.0.0.1:9527
-jet run -h 127.0.0.1 -p 9600 // run jet on 127.0.0.1:9600
+<pre><code># run jet on 127.0.0.1:9527
+shell&gt; jet run 
+# run jet on another port, like 9600
+shell&gt; jet run -h 127.0.0.1 -p 9600 
 </code></pre>
 
 <h2>
-<a id="edit-rule" class="anchor" href="#edit-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit rule</h2>
+<a id="edit-rule" class="anchor" href="#edit-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit Rule</h2>
 
-<pre><code>jet edit-rule tunnel // specify which request to be sent via tunnel
-jet edit-rule block // specify which request to be blocked (in development)
+<pre><code># specify which request to be sent via tunnel.
+shell&gt; jet edit-rule tunnel
+
+# specify which request to be blocked.
+shell&gt; jet edit-rule block
+
+# specify which IP is allowed to use this Jet. By default, only 127.0.0.1 is allowed.
+shell&gt; jet edit-rule ip
 </code></pre>
 
 <h2>
-<a id="backup-rule" class="anchor" href="#backup-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup rule</h2>
+<a id="backup-rule" class="anchor" href="#backup-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup Rule</h2>
 
-<pre><code>jet backup-rule &lt;path&gt; // backup all the rules to a place (in development)
+<pre><code># backup all the rules to a place
+shell&gt; jet backup-rule &lt;path&gt;
 </code></pre>
 
 <h2>
-<a id="configure-os-to-use-this" class="anchor" href="#configure-os-to-use-this" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure OS to use this</h2>
+<a id="configure-all-your-application-to-use-jet" class="anchor" href="#configure-all-your-application-to-use-jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure All Your Application To Use Jet.</h2>
 
 <h3>
 <a id="for-gui" class="anchor" href="#for-gui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For GUI</h3>
 
-<p>I think you know how to set this.</p>
+<p>I think you know how to set this. It's simple.</p>
 
 <h3>
 <a id="for-cli" class="anchor" href="#for-cli" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For CLI</h3>
 
-<p>Suppose Jet is running at <code>127.0.0.1:9527</code>.</p>
+<p>Suppose that Jet is running at <code>127.0.0.1:9527</code>.</p>
 
 <pre><code>CHANNEL="http://127.0.0.1:9527"
 NO_CHANNEL="localhost,127.0.0.1"
@@ -118,10 +152,28 @@ unset NO_PROXY_ENV
 <p>Add above script to your shell init file, like <code>~/.bashrc</code> or <code>~/.zshrc</code>. Then <code>source</code> it.</p>
 
 <h2>
-<a id="test-the-effects" class="anchor" href="#test-the-effects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test the effects</h2>
+<a id="test-the-effects" class="anchor" href="#test-the-effects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test The Effects</h2>
 
-<pre><code>curl --proxy localhost:9527 https://www.google.com/
+<h3>
+<a id="test-jet-is-working-or-not" class="anchor" href="#test-jet-is-working-or-not" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Jet is Working Or Not</h3>
+
+<pre><code>shell&gt; curl --proxy localhost:9527 https://www.google.com/
 </code></pre>
+
+<p>If you get right content, then jet is working.</p>
+
+<h3>
+<a id="test-your-shell-environment-is-set-properly-or-not" class="anchor" href="#test-your-shell-environment-is-set-properly-or-not" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Your Shell Environment Is Set Properly Or Not</h3>
+
+<pre><code>shell&gt; curl https://www.google.com/
+</code></pre>
+
+<p>If you get right content, then jet is working. And your shell environment is set properly, too.</p>
+
+<h2>
+<a id="last" class="anchor" href="#last" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Last</h2>
+
+<p>You are not alone, we are all fighting for freedom.</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LICENSE</h2>
