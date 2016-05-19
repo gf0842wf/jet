@@ -22,7 +22,7 @@
       <h1>
 <a id="jet" class="anchor" href="#jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jet</h1>
 
-<p>An HTTP/HTTPS proxy integrated with SOCKS v4/v4a/v5.</p>
+<p>An HTTP/HTTPS proxy integrated with SOCKS v4/v4a/v5, routes requests via GeoIP CN.</p>
 
 <blockquote>
 <p>The name "Jet" is inspired by Jet Black from Cowboy Bepop.</p>
@@ -64,29 +64,9 @@
 <a id="run-jet" class="anchor" href="#run-jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Jet</h2>
 
 <pre><code># run jet on 127.0.0.1:9527
-shell&gt; jet run 
+shell&gt; jet run
 # run jet on another port, like 9600
-shell&gt; jet run -h 127.0.0.1 -p 9600 
-</code></pre>
-
-<h2>
-<a id="edit-rule" class="anchor" href="#edit-rule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit Rule</h2>
-
-<pre><code># specify which request to be sent via tunnel.
-shell&gt; jet edit-rule tunnel
-
-# specify which request to be blocked.
-shell&gt; jet edit-rule block
-
-# specify which IP is allowed to use this Jet. By default, only 127.0.0.1 is allowed.
-shell&gt; jet edit-rule ip
-</code></pre>
-
-<h2>
-<a id="backup-rule-in-development" class="anchor" href="#backup-rule-in-development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup Rule (in development)</h2>
-
-<pre><code># backup all the rules to a place
-shell&gt; jet backup-rule &lt;path&gt;
+shell&gt; jet run -h 127.0.0.1 -p 9600
 </code></pre>
 
 <h2>
