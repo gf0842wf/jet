@@ -42,6 +42,13 @@
 </code></pre>
 
 <h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>Node.js &gt; 6.0.0</li>
+</ul>
+
+<h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <pre><code>npm install -g m31271n/jet
@@ -65,8 +72,19 @@
 
 <pre><code># run jet on 127.0.0.1:9527
 shell&gt; jet run
+
 # run jet on another port, like 9600
 shell&gt; jet run -h 127.0.0.1 -p 9600
+
+# run automatically via launchd on OS X
+shell&gt; jet config -t launchd
+[INFO] Launchd user agent has been written to /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist,
+[INFO]
+[INFO]     launchctl load /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist
+[INFO]
+[INFO] to launch it, and it will be launched automatically everytime you login.
+# run launchctl according above content
+shell&gt; launchctl load /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist
 </code></pre>
 
 <h2>
@@ -126,6 +144,14 @@ unset NO_PROXY_ENV
 <a id="last" class="anchor" href="#last" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Last</h2>
 
 <p>You are not alone, we are all fighting for freedom.</p>
+
+<h2>
+<a id="reference" class="anchor" href="#reference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reference</h2>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/516323/https-connections-over-proxy-servers">HTTPS connections over proxy servers</a></li>
+<li><a href="http://launchd.info/">OS X Launchd</a></li>
+</ul>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LICENSE</h2>
