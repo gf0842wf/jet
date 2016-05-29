@@ -31,14 +31,14 @@
 <h2>
 <a id="what-does-jet-do" class="anchor" href="#what-does-jet-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What does Jet do?</h2>
 
-<pre><code>              ┌──────────────────────┐
-              │SOCKS v4/v4a/v5 Proxy │
-          ┌──▶│  (ShadowSocks etc.)  │─┐
-          │   └──────────────────────┘ │
-          │                            ▼
-┌──────────────────┐   ┌──────┐   ┌─────────┐
-│ User Application │──▶│ Jet  │──▶│Internet │
-└──────────────────┘   └──────┘   └─────────┘
+<pre><code>                                      ┌──────────────────────┐
+                                      │SOCKS v4/v4a/v5 Proxy │
+                                ┌────▶│  (ShadowSocks etc.)  │──────┐
+                                │     └──────────────────────┘      │
+                                │                                   ▼
+     ┌──────────────────┐     ┌───┐                            ┌────────┐
+     │ User Application │────▶│Jet│───────────────────────────▶│Internet│
+     └──────────────────┘     └───┘                            └────────┘
 </code></pre>
 
 <h2>
