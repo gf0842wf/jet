@@ -26,6 +26,8 @@
 
 <blockquote>
 <p>The name "Jet" is inspired by Jet Black from Cowboy Bepop.</p>
+
+<p>Inspierd by <a href="http://www.catonmat.net/http-proxy-in-nodejs/">http://www.catonmat.net/http-proxy-in-nodejs/</a></p>
 </blockquote>
 
 <h2>
@@ -59,32 +61,32 @@
 </blockquote>
 
 <h2>
-<a id="jet-need-a-socks-proxy" class="anchor" href="#jet-need-a-socks-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jet Need A SOCKS Proxy</h2>
+<a id="setting-appropriate-socks-proxy" class="anchor" href="#setting-appropriate-socks-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting Appropriate SOCKS Proxy</h2>
 
-<p>Now, Jet just support SOCKS v5 proxy that run at <code>127.0.0.1:1080</code>. Shadowsocks is a good choice.</p>
+<p>Change SOCKS Proxy setting via 3 environment variables:</p>
 
-<blockquote>
-<p>If you want the support for SOCKS v4/v4a, contact me, please.</p>
-</blockquote>
+<ul>
+<li><code>JET_SOCKS_ADDR</code></li>
+<li><code>JET_SOCKS_PORT</code></li>
+<li><code>JET_SOCKS_TYPE</code></li>
+</ul>
+
+<p>By default, Jet needs SOCKS v5 proxy that run at <code>127.0.0.1:1080</code>, it means:</p>
+
+<ul>
+<li><code>JET_SOCKS_ADDR=127.0.0.1</code></li>
+<li><code>JET_SOCKS_PORT=1080</code></li>
+<li><code>JET_SOCKS_TYPE=5</code></li>
+</ul>
 
 <h2>
 <a id="run-jet" class="anchor" href="#run-jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Jet</h2>
 
-<pre><code># run jet on 127.0.0.1:9527
+<pre><code># jet runs on 127.0.0.1:9527 by default
 shell&gt; jet run
 
 # run jet on another port, like 9600
 shell&gt; jet run -h 127.0.0.1 -p 9600
-
-# run automatically via launchd on OS X
-shell&gt; jet config -t launchd
-[INFO] Launchd user agent has been written to /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist,
-[INFO]
-[INFO]     launchctl load /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist
-[INFO]
-[INFO] to launch it, and it will be launched automatically everytime you login.
-# run launchctl according above content
-shell&gt; launchctl load /Users/m31271n/Library/LaunchAgents/org.m31271n.jet.plist
 </code></pre>
 
 <h2>
@@ -119,7 +121,11 @@ unset PROXY_ENV
 unset NO_PROXY_ENV
 </code></pre>
 
-<p>Add above script to your shell init file, like <code>~/.bashrc</code> or <code>~/.zshrc</code>. Then <code>source</code> it.</p>
+<p>Add above script to your shell init file, like <code>~/.bashrc</code>. Then <code>source</code> it.</p>
+
+<blockquote>
+<p>If you are using other shell, set above environment variables by yourself.</p>
+</blockquote>
 
 <h2>
 <a id="test-the-effects" class="anchor" href="#test-the-effects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test The Effects</h2>
@@ -150,7 +156,6 @@ unset NO_PROXY_ENV
 
 <ul>
 <li><a href="http://stackoverflow.com/questions/516323/https-connections-over-proxy-servers">HTTPS connections over proxy servers</a></li>
-<li><a href="http://launchd.info/">OS X Launchd</a></li>
 </ul>
 
 <h2>
