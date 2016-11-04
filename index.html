@@ -30,6 +30,44 @@
 <p>Inspierd by <a href="http://www.catonmat.net/http-proxy-in-nodejs/">http://www.catonmat.net/http-proxy-in-nodejs/</a></p>
 </blockquote>
 
+
+
+<ul>
+<li>
+<a href="#jet">Jet</a>
+
+<ul>
+<li><a href="#what-does-jet-do">What does Jet do?</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#setting-appropriate-socks-proxy">Setting Appropriate SOCKS Proxy</a></li>
+<li><a href="#setting-dns-server">Setting DNS Server</a></li>
+<li><a href="#run-jet">Run Jet</a></li>
+<li>
+<a href="#configure-all-your-application-to-use-jet">Configure All Your Application To Use Jet.</a>
+
+<ul>
+<li><a href="#for-gui">For GUI</a></li>
+<li><a href="#for-cli">For CLI</a></li>
+</ul>
+</li>
+<li>
+<a href="#test-the-effects">Test The Effects</a>
+
+<ul>
+<li><a href="#test-jet-is-working-or-not">Test Jet is Working Or Not</a></li>
+<li><a href="#test-your-shell-environment-is-set-properly-or-not">Test Your Shell Environment Is Set Properly Or Not</a></li>
+</ul>
+</li>
+<li><a href="#last">Last</a></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#license">LICENSE</a></li>
+</ul>
+</li>
+</ul>
+
+
+
 <h2>
 <a id="what-does-jet-do" class="anchor" href="#what-does-jet-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What does Jet do?</h2>
 
@@ -78,6 +116,27 @@
 <li><code>JET_SOCKS_PORT=1080</code></li>
 <li><code>JET_SOCKS_TYPE=5</code></li>
 </ul>
+
+<h2>
+<a id="setting-dns-server" class="anchor" href="#setting-dns-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting DNS Server</h2>
+
+<p>By default, Jet uses the DNS server which system is using.</p>
+
+<p>Change DNS Server via 1 environment variables:</p>
+
+<ul>
+<li><code>JET_DNS_SERVERS</code></li>
+</ul>
+
+<p>Set it as following:</p>
+
+<ul>
+<li><code>JET_DNS_SERVERS=127.0.0.1,8.8.8.8</code></li>
+</ul>
+
+<blockquote>
+<p>Limitation：Node's <code>dns.setServers()</code> can't specified port, so you must ensure your DNS server is listening on port <code>53</code>.</p>
+</blockquote>
 
 <h2>
 <a id="run-jet" class="anchor" href="#run-jet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Jet</h2>
