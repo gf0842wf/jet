@@ -1,0 +1,8 @@
+title: Jet
+description: An HTTP/HTTPS proxy integrated with SOCKS v4/v4a/v5.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
